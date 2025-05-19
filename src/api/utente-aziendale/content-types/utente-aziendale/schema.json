@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "utente_aziendales",
+  "info": {
+    "singularName": "utente-aziendale",
+    "pluralName": "utente-aziendales",
+    "displayName": "UtenteAziendale",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "Nome": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 30
+    },
+    "Cognome": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 2,
+      "required": true
+    },
+    "DataDiNascita": {
+      "type": "date",
+      "required": false
+    },
+    "Citta": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50,
+      "minLength": 2
+    },
+    "Provincia": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "Nazione": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 50,
+      "required": true
+    },
+    "IdAzienda": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::azienda.azienda",
+      "inversedBy": "utenti_aziendali"
+    },
+    "Email": {
+      "type": "email",
+      "unique": true
+    },
+    "Password": {
+      "type": "password",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aziendas",
+  "info": {
+    "singularName": "azienda",
+    "pluralName": "aziendas",
+    "displayName": "Azienda",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "Nome": {
+      "type": "string",
+      "maxLength": 50,
+      "minLength": 3,
+      "required": true
+    },
+    "PartitaIva": {
+      "type": "string",
+      "minLength": 11,
+      "maxLength": 11,
+      "unique": true,
+      "required": true
+    },
+    "Citta": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "Provincia": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "Nazione": {
+      "type": "string",
+      "maxLength": 50,
+      "required": true
+    },
+    "utenti_aziendali": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::utente-aziendale.utente-aziendale",
+      "mappedBy": "IdAzienda"
+    }
+  }
+}

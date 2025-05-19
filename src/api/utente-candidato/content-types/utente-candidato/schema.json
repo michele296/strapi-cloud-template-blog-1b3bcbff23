@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "utente_candidatoes",
+  "info": {
+    "singularName": "utente-candidato",
+    "pluralName": "utente-candidatoes",
+    "displayName": "UtenteCandidato"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Nome": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50,
+      "minLength": 2
+    },
+    "Cognome": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 50,
+      "required": true
+    },
+    "Citta": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 50
+    },
+    "Provincia": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "Nazione": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 50
+    },
+    "DataDiNascita": {
+      "type": "date",
+      "required": false
+    },
+    "Email": {
+      "type": "email",
+      "unique": true,
+      "required": true
+    },
+    "Password": {
+      "type": "password",
+      "required": true
+    }
+  }
+}
