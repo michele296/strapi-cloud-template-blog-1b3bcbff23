@@ -662,12 +662,13 @@ export interface ApiUtenteCandidatoUtenteCandidato
   extends Struct.CollectionTypeSchema {
   collectionName: 'utente_candidatoes';
   info: {
+    description: '';
     displayName: 'UtenteCandidato';
     pluralName: 'utente-candidatoes';
     singularName: 'utente-candidato';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     Citta: Schema.Attribute.String &
