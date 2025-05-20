@@ -1,61 +1,47 @@
-# 🚀 Getting started with Strapi
+# Progetto Recruiting diMicco_Dibiase– Backend Strapi
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+## 📚 Descrizione
 
-### `develop`
+Questo progetto costituisce la parte backend di una piattaforma di recruiting, sviluppata nell’ambito dello Sprint 1 del corso di Ingegnerua del Software.
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+Link alla repository GitHub del progetto: https://github.com/michele296/strapi-cloud-template-blog-1b3bcbff23
+L’applicazione al momento consente:
 
-```
-npm run develop
-# or
-yarn develop
-```
+- La registrazione di aziende nel sistema (Michele Dibiase)
+- La registrazione di referenti aziendali (Michele Dibiase)
+- La registrazione di aziende nel sistema (Gianuca di Micco)
 
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+Il backend è stato realizzato con [Strapi](https://strapi.io/), un headless CMS open source basato su Node.js, per semplificare la gestione di content types, API REST e autenticazione.
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## ✅ Funzionalità implementate
+
+| Funzione                                       | Stato  |
+|------------------------------------------------|--------|
+| Registrazione azienda + referente             | ✅ Completata |
+| Registrazione amministratore aziendale        | ✅ Completata |
+
+---
+
+## 🛠️ Tecnologie usate
+
+- Node.js (runtime JavaScript)
+- Strapi (CMS headless per API REST)
+- MySQL (database relazionale)
+- VS Code, Postman, Git
+
+---
+## 📋 File .env
+Se non presente, creare il file .env con questo formato:
+APP_KEYS=mySuperKey1,mySuperKey2
+JWT_SECRET=6ngpA5Gptcbim/c3J1oy1g==
+API_TOKEN_SALT=9OHTbJ4j1yYX8f0P6Xm+VA==
+ADMIN_JWT_SECRET=49266f82955bf5b35a20dc17b49759dc9d4b8421b81eec20cc0d08bac13d207a
+
+DATABASE_CLIENT=mysql
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_NAME=recruiting_project
+DATABASE_USERNAME=VostroUsername
+DATABASE_PASSWORD=VostraPassword
