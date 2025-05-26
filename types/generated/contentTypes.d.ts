@@ -652,6 +652,10 @@ export interface ApiUtenteAziendaleUtenteAziendale
         minLength: 2;
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    Ruolo: Schema.Attribute.Enumeration<
+      ['REFERENTE', 'AMMINISTRATORE', 'ORDINARIO']
+    > &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

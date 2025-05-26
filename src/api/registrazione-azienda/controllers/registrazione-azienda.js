@@ -67,7 +67,7 @@ module.exports = {
             Email: email,
             Password: password,
             IdAzienda: azienda.id,     // ← nome campo relazione
-            Ruolo: 'Referente',
+            Ruolo: 'REFERENTE',
             publishedAt: new Date(),
           },
           transacting: trx,

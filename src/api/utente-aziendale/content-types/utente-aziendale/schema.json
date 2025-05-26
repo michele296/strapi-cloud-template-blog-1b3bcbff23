@@ -58,6 +58,15 @@
     "Password": {
       "type": "password",
       "required": true
+    },
+    "Ruolo": {
+      "type": "enumeration",
+      "enum": [
+        "REFERENTE",
+        "AMMINISTRATORE",
+        "ORDINARIO"
+      ],
+      "required": true
     }
   }
 }

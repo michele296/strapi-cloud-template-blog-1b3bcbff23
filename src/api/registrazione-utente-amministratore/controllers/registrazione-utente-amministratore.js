@@ -49,7 +49,7 @@ module.exports = {
           Email: email,
           Password: password,
           DataDiNascita: dataDiNascita,
-          Ruolo: 'Amministratore',
+          Ruolo: 'AMMINISTRATORE',
           IdAzienda: azienda.id,
           publishedAt: new Date(),
         },
