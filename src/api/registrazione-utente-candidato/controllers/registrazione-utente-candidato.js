@@ -1,3 +1,4 @@
+//registrazione-utente-candidato//
 'use strict';
 
 module.exports = {

@@ -1,25 +1,22 @@
-// registrazioneAzienda.js
+// RegistraCandidato.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { registraAzienda as registraAziendaApi } from '../services/api.js';
+import { registraCandidato } from '../services/api.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import '../styles/RegistraAzienda.css';
-import logo from '../assets/logo.png'; // Importa il tuo logo
+import '../styles/Login.css';
+import logo from '../assets/logo.png';
 
-const RegistraAzienda = () => {
+const RegistraCandidato = () => {
   const [formData, setFormData] = useState({
-    nomeAzienda: '',
-    partitaIva: '',
-    citta: '',
-    provincia: '',
-    nazione: '',
     nome: '',
     cognome: '',
     email: '',
     password: '',
     dataDiNascita: '',
-    ruolo: 'REFERENTE',
+    citta: '',
+    provincia: '',
+    nazione: '',
   });
 
   const handleChange = (e) => {
@@ -32,11 +29,11 @@ const RegistraAzienda = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await registraAziendaApi(formData);
-      alert('Azienda registrata con successo!');
+      await registraCandidato(formData);
+      alert('Registrazione completata con successo!');
     } catch (error) {
       console.error(error);
-      alert('Errore nella registrazione');
+      alert(error.message || 'Errore nella registrazione');
     }
   };
 
@@ -44,7 +41,7 @@ const RegistraAzienda = () => {
     <div className="main-container">
       <div className="registration-card">
         {/* Sezione informazioni */}
-        <div className="info-section">
+        <div className="login-info-section candidate-gradient">
           <div className="info-content">
             {/* Logo e pulsante Home */}
             <div className="header-section">
@@ -55,31 +52,31 @@ const RegistraAzienda = () => {
               </Link>
             </div>
             
-            <h2>Benvenuti nel nostro sistema di recruiting!</h2>
+            <h2>Inizia la tua carriera!</h2>
             <p>
-              Registra la tua azienda per accedere alla nostra piattaforma di gestione 
-              dei talenti e semplificare il processo di assunzione.
+              Registrati sulla nostra piattaforma per accedere alle migliori 
+              opportunità di lavoro e dare una svolta alla tua carriera.
             </p>
             <ul className="features-list">
               <li>
                 <i className="bi bi-check-circle-fill"></i>
-                Gestione completa dei candidati
+                Accesso a migliaia di offerte
               </li>
               <li>
                 <i className="bi bi-check-circle-fill"></i>
-                Pubblicazione offerte di lavoro
+                Candidature semplificate
               </li>
               <li>
                 <i className="bi bi-check-circle-fill"></i>
-                Gestione offerte di lavoro
+                Profilo professionale
               </li>
               <li>
                 <i className="bi bi-check-circle-fill"></i>
-                Chiarezza sulle competenze dei candidati
+                Notifiche personalizzate
               </li>
               <li>
                 <i className="bi bi-check-circle-fill"></i>
-                Integrazione con sistemi HR
+                Supporto nella ricerca
               </li>
             </ul>
           </div>
@@ -87,106 +84,13 @@ const RegistraAzienda = () => {
 
         {/* Sezione form */}
         <div className="form-section">
-          <h2 className="form-title">Registrazione Azienda</h2>
+          <h2 className="form-title">Registrazione Candidato</h2>
           
           <form onSubmit={handleSubmit}>
-            {/* Sezione Dati Azienda */}
+            {/* Sezione Dati Personali */}
             <div className="section-title">
-              <i className="bi bi-building"></i>
-              Dati Azienda
-            </div>
-
-            <div className="form-group">
-              <div className="input-group">
-                <span className="input-group-text">
-                  <i className="bi bi-building"></i>
-                </span>
-                <input
-                  type="text"
-                  name="nomeAzienda"
-                  className="form-control"
-                  placeholder="Nome Azienda"
-                  value={formData.nomeAzienda}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <div className="input-group">
-                <span className="input-group-text">
-                  <i className="bi bi-receipt"></i>
-                </span>
-                <input
-                  type="text"
-                  name="partitaIva"
-                  className="form-control"
-                  placeholder="Partita IVA"
-                  value={formData.partitaIva}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <div className="input-group">
-                <span className="input-group-text">
-                  <i className="bi bi-geo-alt"></i>
-                </span>
-                <input
-                  type="text"
-                  name="citta"
-                  className="form-control"
-                  placeholder="Città"
-                  value={formData.citta}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <div className="input-group">
-                <span className="input-group-text">
-                  <i className="bi bi-map"></i>
-                </span>
-                <input
-                  type="text"
-                  name="provincia"
-                  className="form-control"
-                  placeholder="Provincia"
-                  value={formData.provincia}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <div className="input-group">
-                <span className="input-group-text">
-                  <i className="bi bi-globe"></i>
-                </span>
-                <input
-                  type="text"
-                  name="nazione"
-                  className="form-control"
-                  placeholder="Nazione"
-                  value={formData.nazione}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <hr className="section-divider" />
-
-            {/* Sezione Dati Referente */}
-            <div className="section-title">
-              <i className="bi bi-person-badge"></i>
-              Dati Referente Aziendale
+              <i className="bi bi-person-circle"></i>
+              Dati Personali
             </div>
 
             <div className="form-group">
@@ -273,10 +177,67 @@ const RegistraAzienda = () => {
               </div>
             </div>
 
-            <input type="hidden" name="ruolo" value={formData.ruolo} />
+            <hr className="section-divider" />
+
+            {/* Sezione Residenza */}
+            <div className="section-title">
+              <i className="bi bi-geo-alt"></i>
+              Residenza
+            </div>
+
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="bi bi-geo-alt"></i>
+                </span>
+                <input
+                  type="text"
+                  name="citta"
+                  className="form-control"
+                  placeholder="Città"
+                  value={formData.citta}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="bi bi-map"></i>
+                </span>
+                <input
+                  type="text"
+                  name="provincia"
+                  className="form-control"
+                  placeholder="Provincia"
+                  value={formData.provincia}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="bi bi-globe"></i>
+                </span>
+                <input
+                  type="text"
+                  name="nazione"
+                  className="form-control"
+                  placeholder="Nazione"
+                  value={formData.nazione}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
 
             <button type="submit" className="btn-register">
-              Registra Azienda
+              Registrati
             </button>
           </form>
         </div>
@@ -285,4 +246,4 @@ const RegistraAzienda = () => {
   );
 };
 
-export default RegistraAzienda;
+export default RegistraCandidato;
