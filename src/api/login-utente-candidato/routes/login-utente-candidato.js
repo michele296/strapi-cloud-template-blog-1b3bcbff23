@@ -4,8 +4,8 @@ module.exports = {
   routes: [
     {
       method: 'POST',
-      path: '/registrazione-utente-candidato/registra',
-      handler: 'registrazione-utente-candidato.registra',
+      path: '/login-utente-candidato/login',
+      handler: 'login-utente-candidato.login',
       config: {
         auth: false,
         policies: [],
