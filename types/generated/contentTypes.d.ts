@@ -438,6 +438,36 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAttestatoAttestato extends Struct.CollectionTypeSchema {
+  collectionName: 'attestatoes';
+  info: {
+    displayName: 'Attestato';
+    pluralName: 'attestatoes';
+    singularName: 'attestato';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    livello: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::attestato.attestato'
+    > &
+      Schema.Attribute.Private;
+    possiedes: Schema.Attribute.Relation<'oneToMany', 'api::possiede.possiede'>;
+    publishedAt: Schema.Attribute.DateTime;
+    tipo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
@@ -490,6 +520,12 @@ export interface ApiAziendaAzienda extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Descrizione: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+        minLength: 10;
+      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -521,6 +557,7 @@ export interface ApiAziendaAzienda extends Struct.CollectionTypeSchema {
         minLength: 2;
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    Settore: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -563,6 +600,36 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDomandaDomanda extends Struct.CollectionTypeSchema {
+  collectionName: 'domandas';
+  info: {
+    displayName: 'Domanda';
+    pluralName: 'domandas';
+    singularName: 'domanda';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    domanda: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::domanda.domanda'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    quiz: Schema.Attribute.Relation<'manyToOne', 'api::quiz.quiz'>;
+    risposta: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -589,6 +656,365 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHaTitoloLaureaHaTitoloLaurea
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ha_titolo_laureas';
+  info: {
+    description: '';
+    displayName: 'Ha_titolo_laurea';
+    pluralName: 'ha-titolo-laureas';
+    singularName: 'ha-titolo-laurea';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    laurea: Schema.Attribute.Relation<'manyToOne', 'api::laurea.laurea'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ha-titolo-laurea.ha-titolo-laurea'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_candidato: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::utente-candidato.utente-candidato'
+    >;
+    voto: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 110;
+          min: 66;
+        },
+        number
+      >;
+  };
+}
+
+export interface ApiIndirizzoScolasticoIndirizzoScolastico
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'indirizzo_scolasticos';
+  info: {
+    displayName: 'IndirizzoScolastico';
+    pluralName: 'indirizzo-scolasticos';
+    singularName: 'indirizzo-scolastico';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::indirizzo-scolastico.indirizzo-scolastico'
+    > &
+      Schema.Attribute.Private;
+    nome: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    scuolas: Schema.Attribute.Relation<'manyToMany', 'api::scuola.scuola'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_candidatoes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::utente-candidato.utente-candidato'
+    >;
+  };
+}
+
+export interface ApiLaureaLaurea extends Struct.CollectionTypeSchema {
+  collectionName: 'laureas';
+  info: {
+    description: '';
+    displayName: 'Laurea';
+    pluralName: 'laureas';
+    singularName: 'laurea';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    facolta: Schema.Attribute.String & Schema.Attribute.Required;
+    ha_titolo_laureas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ha-titolo-laurea.ha-titolo-laurea'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::laurea.laurea'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    universitas: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::universita.universita'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOffertaOfferta extends Struct.CollectionTypeSchema {
+  collectionName: 'offertas';
+  info: {
+    description: '';
+    displayName: 'Offerta';
+    pluralName: 'offertas';
+    singularName: 'offerta';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    benefit: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    info: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::offerta.offerta'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    quizzes: Schema.Attribute.Relation<'manyToMany', 'api::quiz.quiz'>;
+    si_candidas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::si-candida.si-candida'
+    >;
+    stipendio: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    tipo_contratto: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_aziendale: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::utente-aziendale.utente-aziendale'
+    >;
+  };
+}
+
+export interface ApiPannelloNotifichePannelloNotifiche
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'pannello_notifiches';
+  info: {
+    description: '';
+    displayName: 'PannelloNotifiche';
+    pluralName: 'pannello-notifiches';
+    singularName: 'pannello-notifiche';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pannello-notifiche.pannello-notifiche'
+    > &
+      Schema.Attribute.Private;
+    notifica: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_candidato: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::utente-candidato.utente-candidato'
+    >;
+  };
+}
+
+export interface ApiPossiedePossiede extends Struct.CollectionTypeSchema {
+  collectionName: 'possiedes';
+  info: {
+    description: '';
+    displayName: 'Possiede';
+    pluralName: 'possiedes';
+    singularName: 'possiede';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    attestato: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::attestato.attestato'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    livello: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::possiede.possiede'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_candidato: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::utente-candidato.utente-candidato'
+    >;
+  };
+}
+
+export interface ApiQuizQuiz extends Struct.CollectionTypeSchema {
+  collectionName: 'quizzes';
+  info: {
+    description: '';
+    displayName: 'Quiz';
+    pluralName: 'quizzes';
+    singularName: 'quiz';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descrizione: Schema.Attribute.Text;
+    domandas: Schema.Attribute.Relation<'oneToMany', 'api::domanda.domanda'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::quiz.quiz'> &
+      Schema.Attribute.Private;
+    offertas: Schema.Attribute.Relation<'manyToMany', 'api::offerta.offerta'>;
+    publishedAt: Schema.Attribute.DateTime;
+    soglia_superamento: Schema.Attribute.Integer;
+    titolo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_aziendale: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::utente-aziendale.utente-aziendale'
+    >;
+  };
+}
+
+export interface ApiScuolaScuola extends Struct.CollectionTypeSchema {
+  collectionName: 'scuolas';
+  info: {
+    description: '';
+    displayName: 'Scuola';
+    pluralName: 'scuolas';
+    singularName: 'scuola';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    citta: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    indirizzo: Schema.Attribute.String;
+    indirizzo_scolasticos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::indirizzo-scolastico.indirizzo-scolastico'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::scuola.scuola'
+    > &
+      Schema.Attribute.Private;
+    nome: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSiCandidaSiCandida extends Struct.CollectionTypeSchema {
+  collectionName: 'si_candidas';
+  info: {
+    description: '';
+    displayName: 'si_candida';
+    pluralName: 'si-candidas';
+    singularName: 'si-candida';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::si-candida.si-candida'
+    > &
+      Schema.Attribute.Private;
+    offerta: Schema.Attribute.Relation<'manyToOne', 'api::offerta.offerta'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_candidato: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::utente-candidato.utente-candidato'
+    >;
+  };
+}
+
+export interface ApiUniversitaUniversita extends Struct.CollectionTypeSchema {
+  collectionName: 'universitas';
+  info: {
+    displayName: 'Universita';
+    pluralName: 'universitas';
+    singularName: 'universita';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    citta: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    indirizzo: Schema.Attribute.String;
+    laureas: Schema.Attribute.Relation<'manyToMany', 'api::laurea.laurea'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::universita.universita'
+    > &
+      Schema.Attribute.Private;
+    nome: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -644,6 +1070,7 @@ export interface ApiUtenteAziendaleUtenteAziendale
         maxLength: 30;
         minLength: 2;
       }>;
+    offertas: Schema.Attribute.Relation<'oneToMany', 'api::offerta.offerta'>;
     Password: Schema.Attribute.Password & Schema.Attribute.Required;
     Provincia: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -652,6 +1079,7 @@ export interface ApiUtenteAziendaleUtenteAziendale
         minLength: 2;
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    quizzes: Schema.Attribute.Relation<'oneToMany', 'api::quiz.quiz'>;
     Ruolo: Schema.Attribute.Enumeration<
       ['REFERENTE', 'AMMINISTRATORE', 'ORDINARIO']
     > &
@@ -659,6 +1087,10 @@ export interface ApiUtenteAziendaleUtenteAziendale
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    valutaziones: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::valutazione.valutazione'
+    >;
   };
 }
 
@@ -694,6 +1126,14 @@ export interface ApiUtenteCandidatoUtenteCandidato
     Email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    ha_titolo_laureas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ha-titolo-laurea.ha-titolo-laurea'
+    >;
+    indirizzo_scolastico: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::indirizzo-scolastico.indirizzo-scolastico'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -712,7 +1152,12 @@ export interface ApiUtenteCandidatoUtenteCandidato
         maxLength: 50;
         minLength: 2;
       }>;
+    pannello_notifiche: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::pannello-notifiche.pannello-notifiche'
+    >;
     Password: Schema.Attribute.Password & Schema.Attribute.Required;
+    possiedes: Schema.Attribute.Relation<'oneToMany', 'api::possiede.possiede'>;
     Provincia: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -720,9 +1165,65 @@ export interface ApiUtenteCandidatoUtenteCandidato
         minLength: 2;
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    si_candidas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::si-candida.si-candida'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    valutaziones: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::valutazione.valutazione'
+    >;
+    voto_diploma: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100;
+          min: 60;
+        },
+        number
+      >;
+  };
+}
+
+export interface ApiValutazioneValutazione extends Struct.CollectionTypeSchema {
+  collectionName: 'valutaziones';
+  info: {
+    displayName: 'Valutazione';
+    pluralName: 'valutaziones';
+    singularName: 'valutazione';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Feedback: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 30;
+      }>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::valutazione.valutazione'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    utente_aziendale: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::utente-aziendale.utente-aziendale'
+    >;
+    utente_candidato: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::utente-candidato.utente-candidato'
+    >;
   };
 }
 
@@ -1237,12 +1738,25 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
+      'api::attestato.attestato': ApiAttestatoAttestato;
       'api::author.author': ApiAuthorAuthor;
       'api::azienda.azienda': ApiAziendaAzienda;
       'api::category.category': ApiCategoryCategory;
+      'api::domanda.domanda': ApiDomandaDomanda;
       'api::global.global': ApiGlobalGlobal;
+      'api::ha-titolo-laurea.ha-titolo-laurea': ApiHaTitoloLaureaHaTitoloLaurea;
+      'api::indirizzo-scolastico.indirizzo-scolastico': ApiIndirizzoScolasticoIndirizzoScolastico;
+      'api::laurea.laurea': ApiLaureaLaurea;
+      'api::offerta.offerta': ApiOffertaOfferta;
+      'api::pannello-notifiche.pannello-notifiche': ApiPannelloNotifichePannelloNotifiche;
+      'api::possiede.possiede': ApiPossiedePossiede;
+      'api::quiz.quiz': ApiQuizQuiz;
+      'api::scuola.scuola': ApiScuolaScuola;
+      'api::si-candida.si-candida': ApiSiCandidaSiCandida;
+      'api::universita.universita': ApiUniversitaUniversita;
       'api::utente-aziendale.utente-aziendale': ApiUtenteAziendaleUtenteAziendale;
       'api::utente-candidato.utente-candidato': ApiUtenteCandidatoUtenteCandidato;
+      'api::valutazione.valutazione': ApiValutazioneValutazione;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "offertas",
+  "info": {
+    "singularName": "offerta",
+    "pluralName": "offertas",
+    "displayName": "Offerta",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tipo_contratto": {
+      "type": "string",
+      "required": true
+    },
+    "info": {
+      "type": "string",
+      "required": false
+    },
+    "benefit": {
+      "type": "string"
+    },
+    "stipendio": {
+      "type": "decimal",
+      "required": true
+    },
+    "quizzes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::quiz.quiz",
+      "inversedBy": "offertas"
+    },
+    "utente_aziendale": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::utente-aziendale.utente-aziendale",
+      "inversedBy": "offertas"
+    },
+    "si_candidas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::si-candida.si-candida",
+      "mappedBy": "offerta"
+    }
+  }
+}

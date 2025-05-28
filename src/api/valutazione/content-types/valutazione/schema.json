@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "valutaziones",
+  "info": {
+    "singularName": "valutazione",
+    "pluralName": "valutaziones",
+    "displayName": "Valutazione"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "Feedback": {
+      "type": "text",
+      "required": true,
+      "minLength": 30
+    },
+    "utente_aziendale": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::utente-aziendale.utente-aziendale",
+      "inversedBy": "valutaziones"
+    },
+    "utente_candidato": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::utente-candidato.utente-candidato",
+      "inversedBy": "valutaziones"
+    }
+  }
+}

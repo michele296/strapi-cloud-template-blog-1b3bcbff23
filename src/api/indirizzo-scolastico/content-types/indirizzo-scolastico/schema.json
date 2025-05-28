@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "indirizzo_scolasticos",
+  "info": {
+    "singularName": "indirizzo-scolastico",
+    "pluralName": "indirizzo-scolasticos",
+    "displayName": "IndirizzoScolastico"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "scuolas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::scuola.scuola",
+      "mappedBy": "indirizzo_scolasticos"
+    },
+    "utente_candidatoes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::utente-candidato.utente-candidato",
+      "mappedBy": "indirizzo_scolastico"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "si_candidas",
+  "info": {
+    "singularName": "si-candida",
+    "pluralName": "si-candidas",
+    "displayName": "si_candida",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "data": {
+      "type": "date"
+    },
+    "utente_candidato": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::utente-candidato.utente-candidato",
+      "inversedBy": "si_candidas"
+    },
+    "offerta": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::offerta.offerta",
+      "inversedBy": "si_candidas"
+    }
+  }
+}

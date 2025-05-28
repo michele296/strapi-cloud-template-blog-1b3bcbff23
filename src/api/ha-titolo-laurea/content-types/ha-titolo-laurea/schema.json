@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ha_titolo_laureas",
+  "info": {
+    "singularName": "ha-titolo-laurea",
+    "pluralName": "ha-titolo-laureas",
+    "displayName": "Ha_titolo_laurea",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "voto": {
+      "type": "integer",
+      "min": 66,
+      "max": 110
+    },
+    "utente_candidato": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::utente-candidato.utente-candidato",
+      "inversedBy": "ha_titolo_laureas"
+    },
+    "laurea": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::laurea.laurea",
+      "inversedBy": "ha_titolo_laureas"
+    }
+  }
+}

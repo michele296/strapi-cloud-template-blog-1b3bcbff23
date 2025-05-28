@@ -45,6 +45,17 @@
       "relation": "oneToMany",
       "target": "api::utente-aziendale.utente-aziendale",
       "mappedBy": "IdAzienda"
+    },
+    "Descrizione": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "minLength": 10,
+      "maxLength": 100
+    },
+    "Settore": {
+      "type": "string",
+      "required": true
     }
   }
 }

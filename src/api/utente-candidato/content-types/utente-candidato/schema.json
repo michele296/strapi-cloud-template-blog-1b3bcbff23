@@ -53,6 +53,47 @@
     "Password": {
       "type": "password",
       "required": true
+    },
+    "voto_diploma": {
+      "type": "integer",
+      "max": 100,
+      "min": 60
+    },
+    "indirizzo_scolastico": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::indirizzo-scolastico.indirizzo-scolastico",
+      "inversedBy": "utente_candidatoes"
+    },
+    "pannello_notifiche": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pannello-notifiche.pannello-notifiche",
+      "mappedBy": "utente_candidato"
+    },
+    "valutaziones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::valutazione.valutazione",
+      "mappedBy": "utente_candidato"
+    },
+    "ha_titolo_laureas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ha-titolo-laurea.ha-titolo-laurea",
+      "mappedBy": "utente_candidato"
+    },
+    "possiedes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::possiede.possiede",
+      "mappedBy": "utente_candidato"
+    },
+    "si_candidas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::si-candida.si-candida",
+      "mappedBy": "utente_candidato"
     }
   }
 }

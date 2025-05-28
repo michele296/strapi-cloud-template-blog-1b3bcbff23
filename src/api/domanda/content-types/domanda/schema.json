@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "domandas",
+  "info": {
+    "singularName": "domanda",
+    "pluralName": "domandas",
+    "displayName": "Domanda"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "domanda": {
+      "type": "string",
+      "required": true
+    },
+    "risposta": {
+      "type": "string",
+      "required": true
+    },
+    "quiz": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::quiz.quiz",
+      "inversedBy": "domandas"
+    }
+  }
+}

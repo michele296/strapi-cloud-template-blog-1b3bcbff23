@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "universitas",
+  "info": {
+    "singularName": "universita",
+    "pluralName": "universitas",
+    "displayName": "Universita"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "indirizzo": {
+      "type": "string"
+    },
+    "citta": {
+      "type": "string"
+    },
+    "laureas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::laurea.laurea",
+      "mappedBy": "universitas"
+    }
+  }
+}

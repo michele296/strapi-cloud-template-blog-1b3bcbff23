@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scuolas",
+  "info": {
+    "singularName": "scuola",
+    "pluralName": "scuolas",
+    "displayName": "Scuola",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "indirizzo": {
+      "type": "string"
+    },
+    "citta": {
+      "type": "string"
+    },
+    "indirizzo_scolasticos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::indirizzo-scolastico.indirizzo-scolastico",
+      "inversedBy": "scuolas"
+    }
+  }
+}

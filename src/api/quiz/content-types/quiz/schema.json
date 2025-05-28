@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quizzes",
+  "info": {
+    "singularName": "quiz",
+    "pluralName": "quizzes",
+    "displayName": "Quiz",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "titolo": {
+      "type": "string",
+      "required": true
+    },
+    "descrizione": {
+      "type": "text"
+    },
+    "soglia_superamento": {
+      "type": "integer"
+    },
+    "offertas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::offerta.offerta",
+      "mappedBy": "quizzes"
+    },
+    "utente_aziendale": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::utente-aziendale.utente-aziendale",
+      "inversedBy": "quizzes"
+    },
+    "domandas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::domanda.domanda",
+      "mappedBy": "quiz"
+    }
+  }
+}

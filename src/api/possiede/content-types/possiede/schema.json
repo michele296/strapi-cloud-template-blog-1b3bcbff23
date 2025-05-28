@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "possiedes",
+  "info": {
+    "singularName": "possiede",
+    "pluralName": "possiedes",
+    "displayName": "Possiede",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "livello": {
+      "type": "integer"
+    },
+    "utente_candidato": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::utente-candidato.utente-candidato",
+      "inversedBy": "possiedes"
+    },
+    "attestato": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::attestato.attestato",
+      "inversedBy": "possiedes"
+    }
+  }
+}
