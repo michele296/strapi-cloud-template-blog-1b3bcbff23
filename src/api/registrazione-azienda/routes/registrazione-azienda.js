@@ -1,16 +1,15 @@
 'use strict';
-
 module.exports = {
   routes: [
     {
       method: 'POST',
-      path: '/registrazione-azienda',
+      path: '/registra-azienda/registra', 
       handler: 'registrazione-azienda.registra',
       config: {
-        policies: [],
         auth: false,
+        policies: [],
+        middlewares: [],
       },
     },
   ],
 };
-
