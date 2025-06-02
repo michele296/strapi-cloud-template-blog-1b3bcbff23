@@ -993,6 +993,7 @@ export interface ApiSiCandidaSiCandida extends Struct.CollectionTypeSchema {
 export interface ApiUniversitaUniversita extends Struct.CollectionTypeSchema {
   collectionName: 'universitas';
   info: {
+    description: '';
     displayName: 'Universita';
     pluralName: 'universitas';
     singularName: 'universita';
@@ -1005,7 +1006,6 @@ export interface ApiUniversitaUniversita extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    indirizzo: Schema.Attribute.String;
     laureas: Schema.Attribute.Relation<'manyToMany', 'api::laurea.laurea'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
