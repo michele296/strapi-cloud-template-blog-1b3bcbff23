@@ -20,6 +20,12 @@
       "relation": "oneToMany",
       "target": "api::possiede.possiede",
       "mappedBy": "attestato"
+    },
+    "offertas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::offerta.offerta",
+      "mappedBy": "attestatoes"
     }
   }
 }

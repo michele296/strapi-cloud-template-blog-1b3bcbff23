@@ -459,6 +459,7 @@ export interface ApiAttestatoAttestato extends Struct.CollectionTypeSchema {
       'api::attestato.attestato'
     > &
       Schema.Attribute.Private;
+    offertas: Schema.Attribute.Relation<'manyToMany', 'api::offerta.offerta'>;
     possiedes: Schema.Attribute.Relation<'oneToMany', 'api::possiede.possiede'>;
     publishedAt: Schema.Attribute.DateTime;
     tipo: Schema.Attribute.String & Schema.Attribute.Required;
@@ -793,6 +794,10 @@ export interface ApiOffertaOfferta extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    attestatoes: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::attestato.attestato'
+    >;
     benefit: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

@@ -59,6 +59,12 @@
       "relation": "manyToMany",
       "target": "api::laurea.laurea",
       "inversedBy": "offertas"
+    },
+    "attestatoes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::attestato.attestato",
+      "inversedBy": "offertas"
     }
   }
 }
