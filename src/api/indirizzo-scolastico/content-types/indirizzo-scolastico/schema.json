@@ -25,6 +25,12 @@
       "relation": "oneToMany",
       "target": "api::utente-candidato.utente-candidato",
       "mappedBy": "indirizzo_scolastico"
+    },
+    "offertas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::offerta.offerta",
+      "mappedBy": "indirizzo_scolasticos"
     }
   }
 }

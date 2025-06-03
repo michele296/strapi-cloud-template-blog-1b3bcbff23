@@ -441,6 +441,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
 export interface ApiAttestatoAttestato extends Struct.CollectionTypeSchema {
   collectionName: 'attestatoes';
   info: {
+    description: '';
     displayName: 'Attestato';
     pluralName: 'attestatoes';
     singularName: 'attestato';
@@ -452,7 +453,6 @@ export interface ApiAttestatoAttestato extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    livello: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -686,6 +686,10 @@ export interface ApiHaTitoloLaureaHaTitoloLaurea
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    universita_frequentata: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::universita.universita'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -726,6 +730,7 @@ export interface ApiIndirizzoScolasticoIndirizzoScolastico
     > &
       Schema.Attribute.Private;
     nome: Schema.Attribute.String & Schema.Attribute.Required;
+    offertas: Schema.Attribute.Relation<'manyToMany', 'api::offerta.offerta'>;
     publishedAt: Schema.Attribute.DateTime;
     scuolas: Schema.Attribute.Relation<'manyToMany', 'api::scuola.scuola'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -764,6 +769,7 @@ export interface ApiLaureaLaurea extends Struct.CollectionTypeSchema {
       'api::laurea.laurea'
     > &
       Schema.Attribute.Private;
+    offertas: Schema.Attribute.Relation<'manyToMany', 'api::offerta.offerta'>;
     publishedAt: Schema.Attribute.DateTime;
     universitas: Schema.Attribute.Relation<
       'manyToMany',
@@ -791,13 +797,19 @@ export interface ApiOffertaOfferta extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    indirizzo_scolasticos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::indirizzo-scolastico.indirizzo-scolastico'
+    >;
     info: Schema.Attribute.String;
+    laureas: Schema.Attribute.Relation<'manyToMany', 'api::laurea.laurea'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::offerta.offerta'
     > &
       Schema.Attribute.Private;
+    provincia: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     quizzes: Schema.Attribute.Relation<'manyToMany', 'api::quiz.quiz'>;
     si_candidas: Schema.Attribute.Relation<
@@ -953,6 +965,10 @@ export interface ApiScuolaScuola extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    utente_candidatoes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::utente-candidato.utente-candidato'
+    >;
   };
 }
 
@@ -980,6 +996,9 @@ export interface ApiSiCandidaSiCandida extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     offerta: Schema.Attribute.Relation<'manyToOne', 'api::offerta.offerta'>;
     publishedAt: Schema.Attribute.DateTime;
+    Stato: Schema.Attribute.Enumeration<
+      ['Rifiutata,', 'In attesa,', 'Colloquio Fissato']
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1006,6 +1025,10 @@ export interface ApiUniversitaUniversita extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ha_titolo_laureas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ha-titolo-laurea.ha-titolo-laurea'
+    >;
     laureas: Schema.Attribute.Relation<'manyToMany', 'api::laurea.laurea'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1165,6 +1188,10 @@ export interface ApiUtenteCandidatoUtenteCandidato
         minLength: 2;
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    scuola_frequentata: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::scuola.scuola'
+    >;
     si_candidas: Schema.Attribute.Relation<
       'oneToMany',
       'api::si-candida.si-candida'

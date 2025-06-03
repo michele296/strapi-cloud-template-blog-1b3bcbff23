@@ -26,6 +26,12 @@
       "relation": "oneToMany",
       "target": "api::ha-titolo-laurea.ha-titolo-laurea",
       "mappedBy": "laurea"
+    },
+    "offertas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::offerta.offerta",
+      "mappedBy": "laureas"
     }
   }
 }

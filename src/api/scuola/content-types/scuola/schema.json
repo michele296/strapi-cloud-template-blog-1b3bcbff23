@@ -26,6 +26,12 @@
       "relation": "manyToMany",
       "target": "api::indirizzo-scolastico.indirizzo-scolastico",
       "inversedBy": "scuolas"
+    },
+    "utente_candidatoes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::utente-candidato.utente-candidato",
+      "mappedBy": "scuola_frequentata"
     }
   }
 }

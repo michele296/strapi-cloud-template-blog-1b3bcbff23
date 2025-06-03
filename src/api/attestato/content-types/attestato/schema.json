@@ -4,16 +4,13 @@
   "info": {
     "singularName": "attestato",
     "pluralName": "attestatoes",
-    "displayName": "Attestato"
+    "displayName": "Attestato",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "attributes": {
-    "livello": {
-      "type": "string",
-      "required": true
-    },
     "tipo": {
       "type": "string",
       "required": true

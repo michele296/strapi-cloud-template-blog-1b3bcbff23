@@ -27,6 +27,12 @@
       "relation": "manyToOne",
       "target": "api::laurea.laurea",
       "inversedBy": "ha_titolo_laureas"
+    },
+    "universita_frequentata": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::universita.universita",
+      "inversedBy": "ha_titolo_laureas"
     }
   }
 }

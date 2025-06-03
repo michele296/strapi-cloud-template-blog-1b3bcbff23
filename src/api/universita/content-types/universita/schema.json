@@ -23,6 +23,12 @@
       "relation": "manyToMany",
       "target": "api::laurea.laurea",
       "mappedBy": "universitas"
+    },
+    "ha_titolo_laureas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ha-titolo-laurea.ha-titolo-laurea",
+      "mappedBy": "universita_frequentata"
     }
   }
 }

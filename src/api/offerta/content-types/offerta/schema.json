@@ -43,6 +43,22 @@
       "relation": "oneToMany",
       "target": "api::si-candida.si-candida",
       "mappedBy": "offerta"
+    },
+    "provincia": {
+      "type": "string",
+      "unique": false
+    },
+    "indirizzo_scolasticos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::indirizzo-scolastico.indirizzo-scolastico",
+      "inversedBy": "offertas"
+    },
+    "laureas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::laurea.laurea",
+      "inversedBy": "offertas"
     }
   }
 }

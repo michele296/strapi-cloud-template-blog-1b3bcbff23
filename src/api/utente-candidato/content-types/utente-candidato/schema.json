@@ -94,6 +94,12 @@
       "relation": "oneToMany",
       "target": "api::si-candida.si-candida",
       "mappedBy": "utente_candidato"
+    },
+    "scuola_frequentata": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::scuola.scuola",
+      "inversedBy": "utente_candidatoes"
     }
   }
 }

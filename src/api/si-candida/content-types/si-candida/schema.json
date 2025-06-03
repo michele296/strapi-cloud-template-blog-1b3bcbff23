@@ -25,6 +25,14 @@
       "relation": "manyToOne",
       "target": "api::offerta.offerta",
       "inversedBy": "si_candidas"
+    },
+    "Stato": {
+      "type": "enumeration",
+      "enum": [
+        "Rifiutata,",
+        "In attesa,",
+        "Colloquio Fissato"
+      ]
     }
   }
 }
