@@ -11,9 +11,6 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "livello": {
-      "type": "integer"
-    },
     "utente_candidato": {
       "type": "relation",
       "relation": "manyToOne",
@@ -25,6 +22,10 @@
       "relation": "manyToOne",
       "target": "api::attestato.attestato",
       "inversedBy": "possiedes"
+    },
+    "livello": {
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -22,23 +22,33 @@ const LoginCandidato = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+// LoginCandidato.js - Modifica la funzione handleSubmit
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  
+  try {
+    const response = await loginUtenteCandidato(formData);
+    alert(`Benvenuto ${response.nome}!`);
     
-    try {
-      const response = await loginUtenteCandidato(formData);
-      alert(`Benvenuto ${response.nome}!`);
-      // Qui puoi salvare i dati utente in localStorage o context
-      // localStorage.setItem('user', JSON.stringify(response));
-      navigate('/dashboard-candidato'); // Redirect alla dashboard
-    } catch (error) {
-      console.error(error);
-      alert(error.message || 'Errore nel login');
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Salva i dati utente in localStorage per la dashboard
+    localStorage.setItem('candidato', JSON.stringify({
+      id: response.id,
+      nome: response.nome,
+      cognome: response.cognome,
+      email: response.email,
+      // Aggiungi altri campi necessari
+    }));
+    
+    navigate('/dashboard-candidato'); // Redirect alla dashboard
+  } catch (error) {
+    console.error(error);
+    alert(error.message || 'Errore nel login');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="login-container">
